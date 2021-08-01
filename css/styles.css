@@ -1,13 +1,18 @@
+/* global variables */
+
 :root {
     /* colors */
     --bg-black: #1C1F21;
     --bg-app: #24282A;
     --bg-text: #2B2E30;
+    --bg-text-hover: hsl(204, 5%, 21%);
     --text-inactive: #CBD0D0;
     --text-active: #FFF;
     --accent: #18A0FB;
     --warning: #EE766D;
 }
+
+/* universal reset */
 
 * {
     margin: 0;
@@ -15,7 +20,130 @@
     box-sizing: border-box;
 }
 
+/* document styles */
+
 html {
-    /* font-family: 'Comfortaa', cursive; */
+    /* base font styles */
     font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1rem;
+    color: var(--text-active);
+}
+
+body {
+    background-color: var(--bg-app);
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* universal styles */
+
+/* links */
+a,
+a:visited {
+    text-decoration: 0;
+    color: var(--text-active);
+}
+
+.title--login {
+    font-family: 'Comfortaa', cursive;
+    font-weight: 700;
+    text-align: center;
+    font-size: 3.052rem;
+    letter-spacing: .4rem;
+    line-height: 4.5rem;
+    margin-top: 5.5rem;
+}
+
+.form {}
+
+.form--login {
+    width: 17.44rem;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.form--login__heading {
+    font-family: 'Comfortaa', cursive;
+    font-weight: 400;
+    font-size: 1.563rem;
+    line-height: 2rem;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+}
+
+.form--login__input {
+    /* .input */
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1rem;
+    line-height: 1rem;
+    font-weight: 300;
+    padding: 0 1rem;
+    color: var(--text-inactive);
+    background-color: var(--bg-text);
+    outline: 0;
+    border: .125rem solid transparent;
+    border-radius: .125rem;
+
+
+    width: 100%;
+    height: 2rem;
+    margin: 1rem auto;
+    display: block;
+}
+
+.form--login__input:hover {
+    background-color: var(--bg-text-hover);
+}
+
+.form--login__input:focus {
+    color: var(--text-active);
+    border-color: var(--accent);
+}
+
+.form--login__detail-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: .5rem;
+    margin-bottom: 1.5rem;
+}
+
+.form--login__detail--checkbox {
+    border: 0;
+    margin-right: .5rem;
+}
+
+.form--login__detail--text,
+.form--login__detail--link {
+    font-size: .625rem;
+}
+
+.form--login__detail--link {
+    margin-left: auto;
+}
+
+.form--login__detail--link:hover {
+    color: var(--accent);
+}
+
+.form--login__btn {
+    color: var(--text-active);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 1rem;
+    line-height: 1rem;
+    padding: .5rem 1.875rem;
+    border-radius: 2rem;
+    border: 0;
+    background-color: var(--bg-text);
+    letter-spacing: .15rem;
+    margin-bottom: 8rem;
+}
+
+.form--login__btn:hover {
+    cursor: pointer;
+    background-color: var(--accent);
 }

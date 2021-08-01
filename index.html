@@ -16,23 +16,27 @@
     <title>Jotter: Login</title>
 </head>
 <body>
-    <div>
-        <header>
-            <h1>Jotter</h1>
-        </header>
-        <section>
-            <h2>Sign In</h2>
-            <input type="text">
-            <input type="text">
-            <div>
-                <input type="radio">
-                <p>Remember me</p>
-                <link href="#">Forgot password?</link>
-            </div>
-            <input type="button" value="login">
-            <p>No account? <link href="#">Sign up here</link></p>
-        </section>
-    </div>
+    <!-- page title -->
+    <header>
+        <h1 class="title--login">Jotter</h1>
+    </header>
+    <!-- login form -->
+    <main class="form form--login">
+        <h3 class="form--login__heading">Sign In</h3>
+        <input class="form--login__input" type="text" placeholder="Username">
+        <input class="form--login__input" type="password" placeholder="Password">
+        <!-- checkbox, detail, forgot password link group -->
+        <div class="form--login__detail-group">
+            <input class="form--login__detail--checkbox" type="checkbox">
+            <p class="form--login__detail--text">Remember me</p>
+            <a class="form--login__detail--link" href="#">Forgot password?</a>
+        </div>
+        <!-- login button -->
+        <input class="form--login__btn" type="button" value="login">
+        <!-- link to sign up -->
+        <p class="form--login__detail--text">No account? <a class="form--login__detail--link" href="#">Sign up <u>here</u></a></p>
+    </main>
+
     <script src="js/main.js" defer></script>
 </body>
 </html>
