@@ -1,3 +1,15 @@
+:root {
+
+    /* colors */
+    --bg-black: #1C1F21;
+    --bg-app: #24282A;
+    --bg-text: #2B2E30;
+    --text-inactive: #CBD0D0;
+    --text-active: #FFF;
+    --accent: #18A0FB;
+    --warning: #EE766D;
+}
+
 * {
     margin: 0;
     padding: 0;
