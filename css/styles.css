@@ -1,5 +1,4 @@
 :root {
-
     /* colors */
     --bg-black: #1C1F21;
     --bg-app: #24282A;
@@ -8,6 +7,11 @@
     --text-active: #FFF;
     --accent: #18A0FB;
     --warning: #EE766D;
+}
+
+html {
+    font-family: 'Comfortaa', cursive;
+    /* font-family: 'Open Sans', sans-serif; */
 }
 
 * {
