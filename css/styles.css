@@ -9,13 +9,13 @@
     --warning: #EE766D;
 }
 
-html {
-    font-family: 'Comfortaa', cursive;
-    /* font-family: 'Open Sans', sans-serif; */
-}
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+html {
+    /* font-family: 'Comfortaa', cursive; */
+    font-family: 'Open Sans', sans-serif;
 }
