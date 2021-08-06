@@ -250,6 +250,10 @@ a:visited {
     border-radius: .25rem;
 }
 
+.toolbar__tool:hover {
+    background-color: var(--bg-text-hover);
+}
+
 .toolbar__tool--is-selected {
     color: var(--text-active);
     background-color: var(--bg-black);
@@ -268,8 +272,10 @@ a:visited {
 .navbar__search-icon {
     font-size: 1rem;
     padding: 0 .5rem;
+    cursor: pointer;
     /* need pro font awesome account for weight: light */
 }
+
 
 .input-field--search {
     font-family: 'Comfortaa', cursive;
@@ -285,7 +291,15 @@ a:visited {
 }
 
 .note {
-    width: 10rem;
-    padding: 1.5rem;
+    width: 10em;
+    padding: 1.5em;
+    color: var(--text-inactive);
     background-color: var(--bg-text);
+    transition: all .4s ease;
+}
+
+.note:hover {
+    cursor: pointer;
+    color: var(--text-active);
+    transform: scale(1.03, 1.03);
 }
