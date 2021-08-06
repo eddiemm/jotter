@@ -183,10 +183,43 @@ a:visited {
     width: 1.21rem;
     height: 1rem;
     margin: 0 1rem;
-    background-color: var(--text-active);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.hamburger {}
+.hamburger {
+    height: 2px;
+    width: 16px;
+    margin: 0 auto;
+    background-color: var(--text-active);
+    border-radius: .1rem;
+    position: relative;
+}
+
+.hamburger::before {
+    content: '';
+    height: 2px;
+    width: 16px;
+    margin: 0 auto;
+    background-color: var(--text-active);
+    border-radius: .1rem;
+
+    position: absolute;
+    top: -5px;
+}
+
+.hamburger::after {
+    content: '';
+    height: 2px;
+    width: 16px;
+    margin: 0 auto;
+    background-color: var(--text-active);
+    border-radius: .1rem;
+
+    position: absolute;
+    top: 5px;
+}
 
 .navbar__brand {
     color: var(--text-active);
@@ -245,4 +278,14 @@ a:visited {
     padding-bottom: .25rem;
     border-radius: 5rem;
     background-color: var(--bg-app);
+}
+
+.note-grid {
+    padding: 1.5rem 3rem;
+}
+
+.note {
+    width: 10rem;
+    padding: 1.5rem;
+    background-color: var(--bg-text);
 }
