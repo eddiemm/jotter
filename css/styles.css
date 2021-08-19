@@ -167,6 +167,8 @@ a:visited {
     background-color: var(--bg-text);
     font-family: 'Comfortaa', cursive;
     color: var(--text-inactive);
+    position: relative;
+    z-index: 2;
 }
 
 .navbar__items {
@@ -220,6 +222,10 @@ a:visited {
 
     position: absolute;
     top: 5px;
+}
+
+.hamburger--close {
+    overflow: hidden;
 }
 
 .navbar__brand {
@@ -287,10 +293,11 @@ a:visited {
     background-color: var(--bg-app);
 }
 
+/* TODO: need to make grid responsive */
 .note-grid {
     padding: 1.5rem 3rem;
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(4, auto);
     gap: 20px 20px;
     grid-template-rows: auto;
 }
@@ -348,3 +355,63 @@ a:visited {
     border-left: .4rem solid transparent;
     border-right: .4rem solid transparent;
 }
+
+.menu__wrapper {
+    z-index: 1;
+    position: absolute;
+    left: 0;
+    top: 0;
+    /* desktop */
+    /* top: 2.9rem; */
+    /* width: 15rem; */
+    width: 100%;
+    height: 100vh;
+    background-color: var(--bg-black);
+
+    /* toggle in js */
+    display: none;
+}
+
+.menu {
+    width: 100%;
+    margin-top: 6rem;
+    /* change this height to move items vertically */
+    height: 65%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    list-style: none;
+    font-family: 'Comfortaa', cursive;
+}
+
+.menu__username-label {
+    background-color: var(--bg-text);
+    padding: .5rem 1rem;
+    border: 2px solid var(--accent);
+    border-radius: 5px;
+    box-shadow: 0px 0px 1.5rem 2px var(--accent);
+}
+
+.menu__link {
+    font-size: 1.563rem;
+}
+
+.menu__link:hover {
+    color: var(--accent);
+}
+
+/* || media queries for responsiveness */
+/* target tablet sized screens at breakpoint w=480px */
+/* most pages will remain stacked as mobile design */
+@media screen and (min-width: 480px) {
+    .menu__wrapper {
+        width: 15rem;
+    }
+}
+
+/* target laptop screens at breakpoint w=768px */
+@media screen and (min-width: 768px) {}
+
+/* target large desktop screens at breakpoint w=1280px */
+@media screen and (min-width: 1280px) {}
