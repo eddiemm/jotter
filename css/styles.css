@@ -322,8 +322,8 @@ a:visited {
 
 .note__btn--close {
     position: absolute;
-    top: .5rem;
-    left: 87%;
+    top: 10px;
+    right: 10px;
     color: var(--text-inactive);
 }
 
@@ -334,12 +334,13 @@ a:visited {
 
 .tooltip {
     position: absolute;
-    top: 1.5rem;
-    left: -.8rem;
+    top: -4px;
+    left: -6rem;
     z-index: 100;
     background-color: var(--bg-black);
-    padding: .3rem .5rem;
+    padding: .5rem;
     border-radius: .4rem;
+    /* line-height: 1rem; */
 }
 
 .tooltip::before {
@@ -347,11 +348,11 @@ a:visited {
     height: .001px;
     width: .001px;
     position: absolute;
-    top: -.4rem;
-    left: 1rem;
-    border-bottom: .5rem solid var(--bg-black);
-    border-left: .4rem solid transparent;
-    border-right: .4rem solid transparent;
+    top: 4px;
+    right: -10px;
+    border-left: .8rem solid var(--bg-black);
+    border-top: .5rem solid transparent;
+    border-bottom: .5rem solid transparent;
 }
 
 .menu__wrapper {
