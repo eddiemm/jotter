@@ -92,6 +92,11 @@ a:visited {
 
 /* || LOGIN PAGE */
 
+.body--sign-up,
+.body--login {
+    height: 100%;
+}
+
 .title {
     font-family: 'Comfortaa', cursive;
     font-weight: 700;
@@ -155,7 +160,7 @@ a:visited {
 
 .btn--login,
 .btn--sign-up {
-    margin-bottom: 8rem;
+    margin-bottom: 4rem;
     margin-top: .5rem;
 }
 
@@ -340,7 +345,6 @@ a:visited {
     background-color: var(--bg-black);
     padding: .5rem;
     border-radius: .4rem;
-    /* line-height: 1rem; */
 }
 
 .tooltip::before {
@@ -410,7 +414,13 @@ a:visited {
 }
 
 /* target laptop screens at breakpoint w=768px */
-@media screen and (min-width: 768px) {}
+@media screen and (min-width: 768px) {
+    .note-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px 20px;
+        grid-template-rows: auto;
+    }
+}
 
 /* target large desktop screens at breakpoint w=1280px */
 @media screen and (min-width: 1280px) {}
