@@ -228,7 +228,7 @@ a:visited {
     top: 5px;
 }
 
-.hamburger--close {
+.hamburger--minus {
     overflow: hidden;
 }
 
@@ -362,7 +362,7 @@ a:visited {
 .menu__wrapper {
     z-index: 1;
     position: absolute;
-    left: 0;
+    left: -250px;
     top: 0;
     /* desktop */
     /* top: 2.9rem; */
@@ -371,8 +371,12 @@ a:visited {
     height: 100vh;
     background-color: var(--bg-black);
 
-    /* toggle in js */
-    display: none;
+    transition: all .6s ease;
+}
+
+/* menu visibility state */
+.menu--is-visible {
+    left: 0px;
 }
 
 .menu {
@@ -393,7 +397,6 @@ a:visited {
     padding: .5rem 1rem;
     border: 2px solid var(--accent);
     border-radius: 5px;
-    box-shadow: 0px 0px 1.5rem 2px var(--accent);
 }
 
 .menu__link {
