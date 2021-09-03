@@ -193,6 +193,7 @@ a:visited {
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 
 .hamburger {
@@ -253,15 +254,18 @@ a:visited {
 }
 
 .toolbar__tool {
+    height: 1.4rem;
+    width: 1.4rem;
     font-size: .75rem;
-    line-height: .75rem;
     margin: 0 .5rem;
-    padding: .5rem;
     cursor: pointer;
     border-radius: .25rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.toolbar__tool:hover {
+.toolbar__tool:active {
     background-color: var(--bg-text-hover);
 }
 
