@@ -59,6 +59,17 @@ function toggleToolById(toolId){
     }
 }
 
-// need ref to live tool elements not snapshot
+// get reference to note elements
+const noteGrid = document.querySelector('.js-note-grid');
+noteGrid.addEventListener('select', (evt) => {
 
+    if(document.activeElement.nodeName.toLowerCase() == 'textarea'){
+        const textarea = document.activeElement;
+        let selectedText = getSelectedText(textarea);
+        // console.log(`selected: ${selectedText}`);
+    }
+}, false);
 
+function getSelectedText(textInputElement){
+    return textInputElement.value.substring(textInputElement.selectionStart, textInputElement.selectionEnd)
+}
