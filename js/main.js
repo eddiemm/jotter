@@ -21,16 +21,26 @@ const toolbar = document.querySelector('.js-toolbar');
 const editingTools = toolbar.children;
 
 // add click listener to parent for event delegation
-toolbar.addEventListener('click', (event) => {
-    let toolElement = event.target.tagName;
+toolbar.addEventListener('click', (evt) => {
+    let toolElement = evt.target.tagName;
 
     // only toggle the selected class if the element is the parent div or the
     // the icon within it
     if(toolElement === 'LI'){
-        event.target.classList.toggle('toolbar__tool--is-selected')
+        evt.target.classList.toggle('toolbar__tool--is-selected')
     }
     if(toolElement === 'I'){
-        event.target.parentElement.classList.toggle('toolbar__tool--is-selected')
+        evt.target.parentElement.classList.toggle('toolbar__tool--is-selected')
     }
 
 }, false);
+
+
+
+// note behavior
+// get reference to the parent grid
+const noteGrid = document.querySelector('.js-note-grid');    
+
+
+
+

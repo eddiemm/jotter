@@ -6,7 +6,7 @@
     --bg-app: #24282A;
     --bg-text: #2B2E30;
     --bg-text-hover: hsl(204, 5%, 21%);
-    --text-inactive: #CBD0D0;
+    --text-inactive: hsl(180, 5%, 70%);
     --text-active: #FFF;
     --accent: #18A0FB;
     --warning: #EE766D;
@@ -107,8 +107,6 @@ a:visited {
     margin-top: 5.5rem;
 }
 
-.wrapper {}
-
 .wrapper--login {
     width: 17.44rem;
     text-align: center;
@@ -171,7 +169,8 @@ a:visited {
     background-color: var(--bg-text);
     font-family: 'Comfortaa', cursive;
     color: var(--text-inactive);
-    position: relative;
+    position: sticky;
+    top: 0;
     z-index: 2;
 }
 
@@ -256,8 +255,9 @@ a:visited {
 .toolbar__tool {
     height: 1.4rem;
     width: 1.4rem;
-    font-size: .75rem;
     margin: 0 .5rem;
+    padding: .8rem;
+    font-size: .75rem;
     cursor: pointer;
     border-radius: .25rem;
     display: flex;
@@ -313,20 +313,32 @@ a:visited {
 .note {
     /* change this back to width to prevent note stretch */
     padding: 1.5em;
+    min-width: 25vw;
+    min-height: 200px;
     color: var(--text-inactive);
     background-color: var(--bg-text);
-    transition: all .4s ease;
+    transition: all .2s ease;
     position: relative;
+    caret-color: var(--accent);
+    outline: none;
+    border: 0;
+    font-family: inherit;
+    line-height: 1.5rem;
+    letter-spacing: 1px;
+    font-size: 1rem;
+    white-space: normal;
 }
 
 .note:hover {
+    line-height: 1.6rem;
     cursor: text;
     color: var(--text-active);
     transform: scale(1.03, 1.03);
 }
 
-.note--selected {
-    border: 2px solid var(--accent);
+.note:focus {
+    outline: 4px solid var(--accent);
+    color: var(--text-active);
 }
 
 .note__btn--close {
