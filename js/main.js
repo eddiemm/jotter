@@ -19,29 +19,46 @@ hamburger.addEventListener('click', toggleMenu, false);
 
 /* TOOLBAR */
 const toolbar = document.querySelector('.js-toolbar');
-const editingTools = toolbar.children;
+
+// create array of tool objects with their name and toggle state
+const editingTools = [];
+
+for(let i = 0; i < toolbar.children.length; i ++){
+    var current = toolbar.children[i];
+    let tool = {
+        toolName: `${current.id}`,
+        isToggled: current.classList.contains('toolbar__tool--selected')
+    };
+    editingTools.push(tool);
+}
 
 // add click listener to parent for event delegation
 toolbar.addEventListener('click', (evt) => {
-    let toolElement = evt.target.tagName;
+    let toolElement = evt.target;
 
     // only toggle the selected class if the element is the parent div or the
     // the icon within it
-    if(toolElement === 'LI'){
-        evt.target.classList.toggle('toolbar__tool--is-selected')
+    if(toolElement.tagName === 'LI'){
+        toolElement.classList.toggle('toolbar__tool--is-selected');
+        toggleToolById(toolElement.id);
     }
-    if(toolElement === 'I'){
-        evt.target.parentElement.classList.toggle('toolbar__tool--is-selected')
+    if(toolElement.tagName === 'I'){
+        toolElement.parentElement.classList.toggle('toolbar__tool--is-selected')
+        toggleToolById(toolElement.parentElement.id);
     }
 
+    console.log(editingTools);
 }, false);
 
+// function to toggle a tool element using their id
+function toggleToolById(toolId){
+    for(let i = 0; i < editingTools.length; i++){
+        if(editingTools[i].toolName === toolId){
+            editingTools[i].isToggled = !editingTools[i].isToggled;
+        }
+    }
+}
 
-
-// note behavior
-// get reference to the parent grid
-const noteGrid = document.querySelector('.js-note-grid');    
-
-
+// need ref to live tool elements not snapshot
 
 

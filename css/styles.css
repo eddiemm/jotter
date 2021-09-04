@@ -326,10 +326,11 @@ a:visited {
     line-height: 1.5rem;
     letter-spacing: 1px;
     font-size: 1rem;
-    white-space: normal;
+    white-space: pre-line;
 }
 
-.note:hover {
+.note:hover,
+.note--focused {
     line-height: 1.6rem;
     cursor: text;
     color: var(--text-active);
