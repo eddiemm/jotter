@@ -169,7 +169,7 @@ a:visited {
     background-color: var(--bg-text);
     font-family: 'Comfortaa', cursive;
     color: var(--text-inactive);
-    position: sticky;
+    position: fixed;
     top: 0;
     z-index: 2;
 }
@@ -303,7 +303,7 @@ a:visited {
 
 /* TODO: need to make grid responsive */
 .note-grid {
-    padding: 1.5rem 3vw;
+    padding: 4rem 3vw 2rem;
     display: grid;
     grid-template-columns: 1fr;
     gap: 20px 20px;
@@ -377,8 +377,8 @@ a:visited {
 
 .menu__wrapper {
     z-index: 1;
-    position: absolute;
-    left: -250px;
+    position: fixed;
+    left: -100vw;
     top: 0;
     /* desktop */
     /* top: 2.9rem; */
@@ -428,8 +428,16 @@ a:visited {
 /* most pages will remain stacked as mobile design */
 @media screen and (min-width: 480px) {
     .menu__wrapper {
+        position: fixed;
+        left: -15rem;
         width: 15rem;
     }
+
+    /* must add this again for javascript to find */
+    .menu--is-visible {
+        left: 0px;
+    }
+
 }
 
 /* target laptop screens at breakpoint w=768px */
@@ -443,3 +451,7 @@ a:visited {
 
 /* target large desktop screens at breakpoint w=1280px */
 @media screen and (min-width: 1280px) {}
+
+
+
+/* TODO: menu slides in from 100vw, lags on anything other than */

@@ -10,6 +10,7 @@ const hamburgerIcon = document.querySelector('.js-hamburger-icon');
 function toggleMenu (){
     menu.classList.toggle('menu--is-visible');
     hamburgerIcon.classList.toggle('hamburger--minus');
+    console.log("menu toggled");
 }
 
 // attach click listener to menu icon
