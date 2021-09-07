@@ -22,7 +22,6 @@ const toolbar = document.querySelector('.js-toolbar');
 
 // create array of tool objects with their name and toggle state
 const editingTools = [];
-
 for(let i = 0; i < toolbar.children.length; i ++){
     var current = toolbar.children[i];
     let tool = {
@@ -32,44 +31,63 @@ for(let i = 0; i < toolbar.children.length; i ++){
     editingTools.push(tool);
 }
 
-// add click listener to parent for event delegation
-toolbar.addEventListener('click', (evt) => {
-    let toolElement = evt.target;
 
-    // only toggle the selected class if the element is the parent div or the
+
+// add click listener to parent for event delegation
+toolbar.addEventListener('click', (evt) => {   
+    let toolElement = evt.target;
+    // only toggle the selected class if the element is the parent li or the
     // the icon within it
-    if(toolElement.tagName === 'LI'){
+    if(toolElement.tagName === 'BUTTON'){        
         toolElement.classList.toggle('toolbar__tool--is-selected');
-        toggleToolById(toolElement.id);
-    }
+        toggleToolById(toolElement.id);   
+    }   
+
     if(toolElement.tagName === 'I'){
         toolElement.parentElement.classList.toggle('toolbar__tool--is-selected')
-        toggleToolById(toolElement.parentElement.id);
+        toggleToolById(toolElement.parentElement.id);  
     }
 
-    console.log(editingTools);
+    // console.log(editingTools);
 }, false);
 
+
+
+
+
+
 // function to toggle a tool element using their id
-function toggleToolById(toolId){
+function toggleToolById(toolId){        
     for(let i = 0; i < editingTools.length; i++){
         if(editingTools[i].toolName === toolId){
             editingTools[i].isToggled = !editingTools[i].isToggled;
+            document.execCommand(toolId);
         }
     }
 }
+
+
 
 // get reference to note elements
 const noteGrid = document.querySelector('.js-note-grid');
 noteGrid.addEventListener('select', (evt) => {
 
-    if(document.activeElement.nodeName.toLowerCase() == 'textarea'){
+    if(document.activeElement.nodeName.toLowerCase() == 'div'){
         const textarea = document.activeElement;
         let selectedText = getSelectedText(textarea);
-        // console.log(`selected: ${selectedText}`);
     }
 }, false);
 
 function getSelectedText(textInputElement){
     return textInputElement.value.substring(textInputElement.selectionStart, textInputElement.selectionEnd)
 }
+
+
+
+
+// TODO: keep focus on note blur so clicks on toolbar dont interfere
+noteGrid.addEventListener('blur', (evt)=>{
+    if(evt.target.nodeName === 'TEXTAREA'){
+        console.log('note blurred');
+    }
+},false);

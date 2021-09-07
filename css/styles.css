@@ -253,16 +253,17 @@ a:visited {
 }
 
 .toolbar__tool {
-    height: 1.4rem;
-    width: 1.4rem;
+    padding: .5rem;
     margin: 0 .5rem;
-    padding: .8rem;
     font-size: .75rem;
     cursor: pointer;
     border-radius: .25rem;
     display: flex;
     justify-content: center;
     align-items: center;
+    border: 0;
+    background-color: transparent;
+    color: var(--text-inactive);
 }
 
 .toolbar__tool:active {
@@ -303,7 +304,7 @@ a:visited {
 
 /* TODO: need to make grid responsive */
 .note-grid {
-    padding: 4rem 3vw 2rem;
+    padding: 7rem 3vw 2rem;
     display: grid;
     grid-template-columns: 1fr;
     gap: 20px 20px;
@@ -312,7 +313,7 @@ a:visited {
 
 .note {
     /* change this back to width to prevent note stretch */
-    padding: 1.5em;
+    padding: 1.5rem;
     min-width: 25vw;
     min-height: 200px;
     color: var(--text-inactive);
@@ -327,6 +328,8 @@ a:visited {
     letter-spacing: 1px;
     font-size: 1rem;
     white-space: pre-line;
+    word-wrap: break-word;
+    overflow: auto;
 }
 
 .note:hover,
@@ -447,6 +450,7 @@ a:visited {
         grid-template-columns: repeat(3, 1fr);
         gap: 20px 20px;
         grid-template-rows: auto;
+        padding: 4rem 3vw 2rem;
     }
 }
 
