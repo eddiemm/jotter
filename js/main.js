@@ -51,6 +51,11 @@ toolbar.addEventListener('click', (evt) => {
     // console.log(editingTools);
 }, false);
 
+// in order to prevent the toolbar from taking focus, we must prevent that behavior
+// in the mousedown event because 'mousedown' occurs before 'focus'
+toolbar.addEventListener('mousedown', (evt) => { 
+    evt.preventDefault();
+}, false);
 
 
 
@@ -68,7 +73,7 @@ function toggleToolById(toolId){
 
 
 
-// get reference to note elements
+// get reference to note elements, maybe use for copy paste?
 const noteGrid = document.querySelector('.js-note-grid');
 noteGrid.addEventListener('select', (evt) => {
 
@@ -83,11 +88,14 @@ function getSelectedText(textInputElement){
 }
 
 
-
-
-// TODO: keep focus on note blur so clicks on toolbar dont interfere
-noteGrid.addEventListener('blur', (evt)=>{
-    if(evt.target.nodeName === 'TEXTAREA'){
-        console.log('note blurred');
-    }
-},false);
+// TODO: add note button styling
+// TODO: add note button behavior
+// TODO: remove button styling
+// TODO: remove button behavior
+// TODO: ul button behavior bug
+// TODO: ol button behavior bug
+// TODO: code button pressed event
+// TODO: search for text implementation
+// TODO: authentication
+// TODO: cloud database connection
+// TODO: Session - State management
