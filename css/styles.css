@@ -250,6 +250,7 @@ a:visited {
     justify-content: center;
     align-items: center;
     list-style-type: none;
+    margin-left: 2rem;
 }
 
 .toolbar__tool {
@@ -304,7 +305,7 @@ a:visited {
 
 /* TODO: need to make grid responsive */
 .note-grid {
-    padding: 7rem 3vw 2rem;
+    padding: 8.5rem 3vw 2rem;
     display: grid;
     grid-template-columns: 1fr;
     gap: 20px 20px;
@@ -390,13 +391,14 @@ a:visited {
     width: 100%;
     height: 100vh;
     background-color: var(--bg-black);
-
+    visibility: hidden;
     transition: all .6s ease;
 }
 
 /* menu visibility state */
 .menu--is-visible {
     left: 0px;
+    visibility: visible;
 }
 
 .menu {
@@ -427,6 +429,19 @@ a:visited {
     color: var(--accent);
 }
 
+.btn--add-note {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+
+    padding: 1.8rem 1rem 2rem;
+    font-size: 3rem;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 0;
+    background-color: var(--bg-black);
+}
+
 /* || media queries for responsiveness */
 /* target tablet sized screens at breakpoint w=480px */
 /* most pages will remain stacked as mobile design */
@@ -440,12 +455,16 @@ a:visited {
     /* must add this again for javascript to find */
     .menu--is-visible {
         left: 0px;
+        visibility: visible;
     }
 
+    .note-grid {
+        padding-top: 7rem;
+    }
 }
 
 /* target laptop screens at breakpoint w=768px */
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 838px) {
     .note-grid {
         grid-template-columns: repeat(3, 1fr);
         gap: 20px 20px;

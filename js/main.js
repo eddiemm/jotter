@@ -99,3 +99,5 @@ function getSelectedText(textInputElement){
 // TODO: authentication
 // TODO: cloud database connection
 // TODO: Session - State management
+// TODO: JS modularity
+// TODO: HTML Semantics
