@@ -346,6 +346,10 @@ a:visited {
     color: var(--text-active);
 }
 
+.note:focus .note__btn--delete {
+    visibility: visible;
+}
+
 .note__btn--delete {
     line-height: 1rem;
     letter-spacing: 0;
@@ -356,6 +360,7 @@ a:visited {
     top: 10px;
     right: 10px;
     color: var(--text-inactive);
+    visibility: hidden;
 }
 
 .note__btn--delete:hover {
@@ -393,8 +398,6 @@ a:visited {
     border-style: solid;
     border-color: transparent transparent transparent var(--bg-black);
 }
-
-
 
 .menu__wrapper {
     z-index: 1;
