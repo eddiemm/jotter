@@ -69,20 +69,15 @@ function toggleToolById(toolId){
 const noteGrid = document.querySelector('.js-note-grid');
 noteGrid.addEventListener('select', (evt) => {
 
-    if(document.activeElement.nodeName.toLowerCase() == 'div'){
-        const textarea = document.activeElement;
-        let selectedText = getSelectedText(textarea);
-    }
+    // if(document.activeElement.nodeName.toLowerCase() == 'div'){
+    //     const textarea = document.activeElement;
+    //     let selectedText = getSelectedText(textarea);
+    // }
 }, false);
 
-function getSelectedText(textInputElement){
-    return textInputElement.value.substring(textInputElement.selectionStart, textInputElement.selectionEnd)
-}
-
-
-noteGrid.addEventListener('focus', (evt) => {
-    console.log('Event target: ' + evt.target.nodeName);
-}, true);
+// function getSelectedText(textInputElement){
+//     return textInputElement.value.substring(textInputElement.selectionStart, textInputElement.selectionEnd)
+// }
 
 
 // Add note functionality
@@ -102,10 +97,10 @@ function createNoteElement(){
     newNoteText.spellcheck = 'false';
 
     const deleteNoteButton = document.createElement('div');
-    deleteNoteButton.classList.add('note__btn--delete');
+    deleteNoteButton.classList.add('note__btn--delete', 'js-note-delete');
 
     const tooltip = document.createElement('div');
-    tooltip.classList.add('tooltip');
+    tooltip.classList.add('tooltip', 'js-tooltip');
     tooltip.textContent = 'Delete?';
 
     deleteNoteButton.innerHTML = '&times;';
@@ -116,11 +111,25 @@ function createNoteElement(){
 }
 
 // deleteNoteElement()
+noteGrid.addEventListener('mousedown', (evt)=> {
+    let deleteClicked = evt.target.classList.contains('js-note-delete');
+    let tooltipClicked = evt.target.classList.contains('js-tooltip');
+    if(deleteClicked || tooltipClicked){
+        evt.preventDefault();
+        // could delete note here or add click listener
+        if(tooltipClicked){
+            console.log('delete note');
+            // evt.target.closest('.note').classList.add('note--deleted');
+            evt.target.closest('.note').remove();
+            // alert('Note deleted');
+        }
+    }
+}, false);
 
 // [x] TODO: add note button styling    
-// TODO: add note button behavior
-// [x] TODO: remove button styling
-// TODO: remove button behavior
+// [x] TODO: add note button behavior
+// [x] TODO: remove note button styling
+// [x] TODO: remove note button behavior
 // TODO: ul button behavior bug
 // TODO: ol button behavior bug
 // TODO: code button pressed event
@@ -130,3 +139,12 @@ function createNoteElement(){
 // TODO: Session - State management
 // TODO: JS modularity
 // TODO: HTML Semantics
+
+
+// BUGS: 
+// Edit buttons dont affect CTRL+A text
+// Clicking delete button removes not focus.
+
+// EXTRAS:
+// Note deleted custom alert
+// Note deleted animation
