@@ -9,6 +9,7 @@
     --text-inactive: hsl(180, 5%, 70%);
     --text-active: #FFF;
     --accent: #18A0FB;
+    --accent-dark: hsl(204, 50%, 30%);
     --warning: #EE766D;
 }
 
@@ -314,40 +315,57 @@ a:visited {
 
 .note {
     /* change this back to width to prevent note stretch */
-    padding: 1.5rem;
+    /* padding: 1.5rem; */
     min-width: 25vw;
     min-height: 200px;
     color: var(--text-inactive);
     background-color: var(--bg-text);
     transition: all .2s ease;
     position: relative;
-    caret-color: var(--accent);
     outline: none;
     border: 0;
     font-family: inherit;
     line-height: 1.5rem;
     letter-spacing: 1px;
     font-size: 1rem;
-    white-space: pre-line;
+    /* white-space: pre-line; */
     word-wrap: break-word;
     overflow: auto;
 }
 
+.note:hover {
+    outline: 4px solid var(--accent-dark);
+}
+
+.note:focus-within {
+    outline: 4px solid var(--accent);
+}
+
 .note:hover,
-.note--focused {
+.note:focus-within {
     line-height: 1.6rem;
     cursor: text;
     color: var(--text-active);
     transform: scale(1.03, 1.03);
 }
 
-.note:focus {
-    outline: 4px solid var(--accent);
-    color: var(--text-active);
+.note__text {
+    caret-color: var(--accent);
+    outline: none;
+    border: 0;
+    height: 100%;
+    padding: 1.5rem;
+    display: block;
 }
 
-.note:focus .note__btn--delete {
+.note__text:focus+.note__btn--delete {
     visibility: visible;
+}
+
+.note__text:empty:before {
+    content: '\"How to finish what you sta...\"';
+    font-weight: 300;
+    font-style: italic;
 }
 
 .note__btn--delete {
@@ -357,8 +375,8 @@ a:visited {
     cursor: pointer;
     font-size: 1.5rem;
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 8px;
+    right: 8px;
     color: var(--text-inactive);
     visibility: hidden;
 }

@@ -31,8 +31,6 @@ for(let i = 0; i < toolbar.children.length; i ++){
     editingTools.push(tool);
 }
 
-
-
 // add click listener to parent for event delegation
 toolbar.addEventListener('click', (evt) => {   
     let toolElement = evt.target;
@@ -56,10 +54,6 @@ toolbar.addEventListener('click', (evt) => {
 toolbar.addEventListener('mousedown', (evt) => { 
     evt.preventDefault();
 }, false);
-
-
-
-
 
 // function to toggle a tool element using their id
 function toggleToolById(toolId){        
@@ -88,7 +82,7 @@ function getSelectedText(textInputElement){
 }
 
 
-// TODO: add note button styling
+// [x] TODO: add note button styling    
 // TODO: add note button behavior
 // TODO: remove button styling
 // TODO: remove button behavior
