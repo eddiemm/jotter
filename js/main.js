@@ -10,7 +10,6 @@ const hamburgerIcon = document.querySelector('.js-hamburger-icon');
 function toggleMenu (){
     menu.classList.toggle('menu--is-visible');
     hamburgerIcon.classList.toggle('hamburger--minus');
-    console.log("menu toggled");
 }
 
 // attach click listener to menu icon
@@ -46,7 +45,6 @@ toolbar.addEventListener('click', (evt) => {
         toggleToolById(toolElement.parentElement.id);  
     }
 
-    // console.log(editingTools);
 }, false);
 
 // in order to prevent the toolbar from taking focus, we must prevent that behavior
@@ -82,9 +80,46 @@ function getSelectedText(textInputElement){
 }
 
 
+noteGrid.addEventListener('focus', (evt) => {
+    console.log('Event target: ' + evt.target.nodeName);
+}, true);
+
+
+// Add note functionality
+const addButton = document.querySelector('#addNote');
+
+addButton.addEventListener('click', createNoteElement, false);
+
+// createNoteElement()
+function createNoteElement(){
+    console.log('Add button clicked');
+    const newNote = document.createElement('div');
+    newNote.classList.add('note');
+    
+    const newNoteText = document.createElement('span');
+    newNoteText.classList.add('note__text');
+    newNoteText.contentEditable = 'true';
+    newNoteText.spellcheck = 'false';
+
+    const deleteNoteButton = document.createElement('div');
+    deleteNoteButton.classList.add('note__btn--delete');
+
+    const tooltip = document.createElement('div');
+    tooltip.classList.add('tooltip');
+    tooltip.textContent = 'Delete?';
+
+    deleteNoteButton.innerHTML = '&times;';
+    deleteNoteButton.appendChild(tooltip);
+
+    newNote.append(newNoteText, deleteNoteButton);
+    noteGrid.appendChild(newNote);
+}
+
+// deleteNoteElement()
+
 // [x] TODO: add note button styling    
 // TODO: add note button behavior
-// TODO: remove button styling
+// [x] TODO: remove button styling
 // TODO: remove button behavior
 // TODO: ul button behavior bug
 // TODO: ol button behavior bug

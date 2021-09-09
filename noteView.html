@@ -65,7 +65,15 @@
     <main class="note-grid js-note-grid">
         
         <div class="note">
-            <span contenteditable spellcheck="false" class="note__text js-note">TEST NOTE</span>
+            <span contenteditable spellcheck="false" class="note__text">TEST NOTE</span>
+            <div class="note__btn--delete">
+                <div class="tooltip">Delete?</div>
+                &times;
+            </div>
+        </div>
+
+        <div class="note">
+            <span contenteditable spellcheck="false" class="note__text">TEST NOTE</span>
             <div class="note__btn--delete js-note-delete">
                 <div class="tooltip">Delete?</div>
                 &times;
@@ -73,7 +81,7 @@
         </div>
 
         <div class="note">
-            <span contenteditable spellcheck="false" class="note__text js-note">TEST NOTE</span>
+            <span contenteditable spellcheck="false" class="note__text">TEST NOTE</span>
             <div class="note__btn--delete js-note-delete">
                 <div class="tooltip">Delete?</div>
                 &times;
@@ -81,22 +89,14 @@
         </div>
 
         <div class="note">
-            <span contenteditable spellcheck="false" class="note__text js-note">TEST NOTE</span>
-            <div class="note__btn--delete js-note-delete">
-                <div class="tooltip">Delete?</div>
-                &times;
-            </div>
-        </div>
-
-        <div class="note">
-            <span contenteditable spellcheck="false" class="note__text js-note">TEST NOTE</span>
+            <span contenteditable spellcheck="false" class="note__text">TEST NOTE</span>
             <div class="note__btn--delete js-note-delete">
                 <div class="tooltip">Delete?</div>
                 &times;
             </div>
         </div>
     </main>
-    <div class="btn btn--add-note">&plus;</div>
+    <div id="addNote" class="btn btn--add-note">&plus;</div>
     <script src="js/main.js" defer></script>
 </body>
 </html>
