@@ -39,14 +39,14 @@
                     <button id="italic" class="toolbar__tool js-ital"><i class="fas fa-italic"></i></button>
                     <button id="underline" class="toolbar__tool js-underline"><i class="fas fa-underline"></i></button>
                     <button id="strikeThrough" class="toolbar__tool js-strikethrough"><i class="fas fa-strikethrough"></i></button>
-                    <button id="code" class="toolbar__tool js-code"><i class="fas fa-code"></i></li>
+                    <!-- <button id="code" class="toolbar__tool js-code"><i class="fas fa-code"></i></li> -->
                     <button id="insertUnorderedList" class="toolbar__tool js-bullet"><i class="fas fa-list"></i></button>
                     <button id="insertOrderedList" class="toolbar__tool js-number"><i class="fas fa-list-ol"></i></button>
                 </ul>
             </li>
 
             <!-- search bar -->
-            <li class="navbar__search-bar">
+            <li class="navbar__search-bar js-searchbar">
                 <label for="searchText" class="navbar__search-icon js-menu-icon"><i class="fas fa-search"></i></label>
                 <input id="searchText" type="text" class="input-field input-field--search" placeholder="Search">
             </li>
@@ -65,7 +65,7 @@
     <main class="note-grid js-note-grid">
         
         <div class="note">
-            <span contenteditable="true" spellcheck="false" class="note__text">Note 1</span>
+            <div contenteditable="true" spellcheck="false" class="note__text js-note-text">Note 1</div>
             <div class="note__btn--delete js-note-delete">
                 <div class="tooltip js-tooltip">Delete?</div>
                 &times;
@@ -73,7 +73,7 @@
         </div>
 
         <div class="note">
-            <span contenteditable="true" spellcheck="false" class="note__text">Note 2</span>
+            <div contenteditable="true" spellcheck="false" class="note__text">Try to change the color of this word. Then, try to revert that effect.</div>
             <div class="note__btn--delete js-note-delete">
                 <div class="tooltip js-tooltip">Delete?</div>
                 &times;
@@ -100,3 +100,6 @@
     <script src="js/main.js" defer></script>
 </body>
 </html>
+
+<!-- div note: editing works -->
+<!-- span note: editing doesnt work, empty placeholder works -->

@@ -11,6 +11,7 @@
     --accent: #18A0FB;
     --accent-dark: hsl(204, 50%, 30%);
     --warning: #EE766D;
+    --text-highlight: #18A0FB;
 }
 
 /* universal reset */
@@ -269,9 +270,9 @@ a:visited {
     color: var(--text-inactive);
 }
 
-.toolbar__tool:active {
-    background-color: var(--bg-text-hover);
-}
+/* .toolbar__tool:active {
+    background-color: red;
+} */
 
 .toolbar__tool--is-selected {
     color: var(--text-active);
@@ -299,8 +300,8 @@ a:visited {
 .input-field--search {
     font-family: 'Comfortaa', cursive;
     letter-spacing: .1rem;
-    padding-top: .25rem;
-    padding-bottom: .25rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
     border-radius: 5rem;
     background-color: var(--bg-app);
 }
@@ -329,10 +330,14 @@ a:visited {
     line-height: 1.5rem;
     letter-spacing: 1px;
     font-size: 1rem;
-    /* white-space: pre-line; */
-    word-wrap: break-word;
-    overflow: auto;
+    /* white-space: pre-wrap; */
+    /* word-wrap: break-word;
+    overflow: auto; */
 }
+
+/* blockquote {
+    margin-left: 2rem;
+} */
 
 .note--deleted {
     transform: scale(0);
@@ -359,9 +364,13 @@ a:visited {
     caret-color: var(--accent);
     outline: none;
     border: 0;
+    width: 100%;
     height: 100%;
     padding: 1.5rem;
-    display: block;
+    display: inline-block;
+    /* white-space: pre-line; */
+    word-wrap: break-word;
+    overflow: auto;
 }
 
 .note__text:focus+.note__btn--delete {
@@ -483,6 +492,13 @@ a:visited {
     letter-spacing: 0;
     line-height: 0;
     background-color: var(--bg-black);
+}
+
+.text--highlight {
+    background-color: var(--text-highlight);
+    color: var(--bg-black);
+    border-radius: 2px;
+    padding: 2px;
 }
 
 /* || media queries for responsiveness */
