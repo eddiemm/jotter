@@ -21,35 +21,35 @@
         <h1 class="title">Jotter</h1>
     </header>
     <!-- login form -->
-    <section class="wrapper wrapper--login js-sign-in">
+    <form class="wrapper wrapper--login js-sign-in">
         <h3 class="login__heading">Sign In</h3>
-        <input class="input-field input-field--login" type="text" placeholder="Username">
-        <input class="input-field input-field--login" type="password" placeholder="Password">
+        <input name="username" class="input-field input-field--login" type="text" placeholder="Username">
+        <input name="password" class="input-field input-field--login" type="password" placeholder="Password">
         <!-- checkbox, detail, forgot password link group -->
         <div class="detail-group">
-            <input class="detail detail--checkbox" type="checkbox">
-            <p class="detail detail--text">Remember me</p>
+            <input id="remember" class="detail detail--checkbox" type="checkbox">
+            <label for="remember" class="detail detail--text">Remember me</label>
             <a class="detail detail--link" href="#">Forgot password?</a>
         </div>
         <!-- login button -->
         <input class="btn btn--login" type="button" value="login">
         <!-- link to sign up -->
         <p class="detail detail--text">No account? <span class="detail detail--link js-sign-up-link" >Sign up <u>here</u></span></p>    
-    </section>
+    </form>
 
-    <section class="wrapper wrapper--login hide js-sign-up">
+    <form class="wrapper wrapper--login hide js-sign-up">
         <!-- sign up section -->
         <h3 class="login__heading">Sign Up</h3>
-        <input class="input-field input-field--sign-up" type="email" placeholder="Email">
-        <input class="input-field input-field--sign-up" type="text" placeholder="Pick a username">
-        <input class="input-field input-field--sign-up" type="password" placeholder="Create password">
-        <input class="input-field input-field--sign-up" type="password" placeholder="Re-enter password">
+        <input name="email" class="input-field input-field--sign-up" type="email" placeholder="Email">
+        <input name="createUsername" class="input-field input-field--sign-up" type="text" placeholder="Pick a username">
+        <input name="newPassword" class="input-field input-field--sign-up" type="password" placeholder="Create password">
+        <input name="confirmedPassword" class="input-field input-field--sign-up" type="password" placeholder="Re-enter password">
         
         <!-- sign up button -->
         <input class="btn btn--sign-up" type="button" value="sign up">
         <!-- link to sign in -->
         <p class="detail detail--text">Already have an account? <span class="detail detail--link js-sign-in-link">Sign in <u>here</u></span></p>
-    </section>
+    </form>
 
     <script src="js/login.js" defer></script>
 </body>
