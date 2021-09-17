@@ -152,6 +152,7 @@ a:visited {
 
 .detail--link {
     margin-left: auto;
+    cursor: pointer;
 }
 
 .detail--link:hover {
@@ -306,7 +307,6 @@ a:visited {
     background-color: var(--bg-app);
 }
 
-/* TODO: need to make grid responsive */
 .note-grid {
     padding: 8.5rem 3vw 2rem;
     display: grid;
@@ -322,7 +322,7 @@ a:visited {
     min-height: 200px;
     color: var(--text-inactive);
     background-color: var(--bg-text);
-    transition: all .2s ease;
+    transition: all .5s ease;
     position: relative;
     outline: 4px solid transparent;
     border: 0;
@@ -345,7 +345,7 @@ a:visited {
 
 .note:hover {
     outline: 4px solid var(--accent-dark);
-    transition: outline .1s linear;
+    transition: outline 250ms ease-out;
 }
 
 .note:focus-within {
@@ -499,6 +499,10 @@ a:visited {
     color: var(--bg-black);
     border-radius: 2px;
     padding: 2px;
+}
+
+.hide {
+    display: none;
 }
 
 /* || media queries for responsiveness */

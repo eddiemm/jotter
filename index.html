@@ -21,7 +21,7 @@
         <h1 class="title">Jotter</h1>
     </header>
     <!-- login form -->
-    <main class="wrapper wrapper--login">
+    <section class="wrapper wrapper--login js-sign-in">
         <h3 class="login__heading">Sign In</h3>
         <input class="input-field input-field--login" type="text" placeholder="Username">
         <input class="input-field input-field--login" type="password" placeholder="Password">
@@ -34,9 +34,23 @@
         <!-- login button -->
         <input class="btn btn--login" type="button" value="login">
         <!-- link to sign up -->
-        <p class="detail detail--text">No account? <a class="detail detail--link" href="/root/signUp.html">Sign up <u>here</u></a></p>
-    </main>
+        <p class="detail detail--text">No account? <span class="detail detail--link js-sign-up-link" >Sign up <u>here</u></span></p>    
+    </section>
 
-    <script src="js/main.js" defer></script>
+    <section class="wrapper wrapper--login hide js-sign-up">
+        <!-- sign up section -->
+        <h3 class="login__heading">Sign Up</h3>
+        <input class="input-field input-field--sign-up" type="email" placeholder="Email">
+        <input class="input-field input-field--sign-up" type="text" placeholder="Pick a username">
+        <input class="input-field input-field--sign-up" type="password" placeholder="Create password">
+        <input class="input-field input-field--sign-up" type="password" placeholder="Re-enter password">
+        
+        <!-- sign up button -->
+        <input class="btn btn--sign-up" type="button" value="sign up">
+        <!-- link to sign in -->
+        <p class="detail detail--text">Already have an account? <span class="detail detail--link js-sign-in-link">Sign in <u>here</u></span></p>
+    </section>
+
+    <script src="js/login.js" defer></script>
 </body>
 </html>

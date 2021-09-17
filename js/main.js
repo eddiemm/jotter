@@ -184,8 +184,6 @@ function searchNotes(searchText){
     }
 }
 
-
-
 // [x] add note button styling    
 // [x] add note button behavior
 // [x] remove note button styling
