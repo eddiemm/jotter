@@ -1,4 +1,4 @@
-console.log('Jotter canvas ready');
+import { signUserOut } from './authentication.js';
 
 /* MENU */
 // DOM variables
@@ -184,6 +184,22 @@ function searchNotes(searchText){
     }
 }
 
+
+// const logoutLink = document.querySelector("#logoutLink");
+// console.log(logoutLink);
+// logoutLink.addEventListener('click', (evt)=>{
+//     evt.preventDefault();
+//     signOut(auth).then(() => {
+//         // Sign-out successful.
+//         console.log(`signed out successfully`);
+//         window.location.href = "./index.html";
+//       }).catch((error) => {
+//         // An error happened.
+//         console.log(`error occurred signing out--- ${error.message}`);
+//       });
+// });
+
+
 // [x] add note button styling    
 // [x] add note button behavior
 // [x] remove note button styling
@@ -207,3 +223,17 @@ function searchNotes(searchText){
 // EXTRAS:
 // Note deleted custom alert
 // Note deleted animation
+
+
+// const brand = document.querySelector('.navbar__brand');
+// brand.addEventListener('click', evt=>{
+//     window.location.href = "./index.html";
+// }, false);
+
+
+const logoutLink = document.querySelector("#logoutLink");
+logoutLink.addEventListener('click', (evt)=>{
+    // evt.preventDefault();
+    signUserOut();
+    console.log("User signed out successfully!");
+});

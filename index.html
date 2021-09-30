@@ -23,8 +23,8 @@
     <!-- login form -->
     <form class="wrapper wrapper--login js-sign-in">
         <h3 class="login__heading">Sign In</h3>
-        <input name="username" class="input-field input-field--login" type="text" placeholder="Username">
-        <input name="password" class="input-field input-field--login" type="password" placeholder="Password">
+        <input name="email" class="input-field input-field--login" type="email" required placeholder="Email" title="Enter a valid email address" pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$">
+        <input pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" name="password" class="input-field input-field--login" type="password" required placeholder="Password" title="Must be at least 6 characters and contain 1 uppercase, 1 lowercase, 1 number.">
         <!-- checkbox, detail, forgot password link group -->
         <div class="detail-group">
             <input id="remember" class="detail detail--checkbox" type="checkbox">
@@ -40,17 +40,18 @@
     <form class="wrapper wrapper--login hide js-sign-up">
         <!-- sign up section -->
         <h3 class="login__heading">Sign Up</h3>
-        <input name="email" class="input-field input-field--sign-up" type="email" placeholder="Email">
-        <input name="createUsername" class="input-field input-field--sign-up" type="text" placeholder="Pick a username">
-        <input name="newPassword" class="input-field input-field--sign-up" type="password" placeholder="Create password">
-        <input name="confirmedPassword" class="input-field input-field--sign-up" type="password" placeholder="Re-enter password">
+        <input name="emailRegistration" class="input-field input-field--sign-up" type="email" required placeholder="Email" title="Enter a valid email address" pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$">
+        <input name="createUsername" class="input-field input-field--sign-up" type="text" required placeholder="Pick a username">
+        <input pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" name="newPassword" class="input-field input-field--sign-up" type="password" required placeholder="Create password" title="Must be at least 6 characters and contain 1 uppercase, 1 lowercase, 1 number.">
+        <input pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" name="confirmedPassword" class="input-field input-field--sign-up" type="password" required placeholder="Confirm password">
         
         <!-- sign up button -->
         <input class="btn btn--sign-up" type="button" value="sign up">
         <!-- link to sign in -->
         <p class="detail detail--text">Already have an account? <span class="detail detail--link js-sign-in-link">Sign in <u>here</u></span></p>
-    </form>
+    </form>   
 
-    <script src="js/login.js" defer></script>
+    <!-- <script type="module" src="js/firebase.js"></script> -->
+    <script type="module" src="js/index.js"></script>    
 </body>
 </html>

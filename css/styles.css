@@ -132,6 +132,16 @@ a:visited {
     display: block;
 }
 
+.input-field--login:valid,
+.input-field--sign-up:valid {
+    border-color: hsl(80, 100%, 50%);
+}
+
+.input-field--login:not(:placeholder-shown):invalid,
+.input-field--sign-up:not(:placeholder-shown):invalid {
+    border-color: var(--warning);
+}
+
 .detail-group {
     display: flex;
     flex-direction: row;
