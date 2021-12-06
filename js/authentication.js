@@ -1,6 +1,6 @@
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, updateProfile } from 'https://www.gstatic.com/firebasejs/9.1.0/firebase-auth.js';
 import { auth } from "./firebase.js";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'https://www.gstatic.com/firebasejs/9.1.0/firebase-auth.js';
-import { database } from "./firestore.js";
+import { getNotes } from "./firestore.js";
 
 // export functions to handle authentication 
 export function createUser(email, password){
@@ -9,12 +9,11 @@ export function createUser(email, password){
         // Signed in 
         const user = userCredential.user;
         console.log(`${user.email} created successfully!`);
-        // store the current users username in database
+        // TODO: store the current users displayName
     })
     .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        // ..
         console.log('an error occurred: ' + errorMessage);
     });
 }
@@ -36,6 +35,7 @@ export function loginUser(email, password){
 
 
 export function signUserOut(){
+    // unsubscribe();
     signOut(auth).then(() => {
         // Sign-out successful.
         console.log(`signed out successfully`);
@@ -47,19 +47,35 @@ export function signUserOut(){
 }
 
 
-
+let currentUser = null;
 auth.onAuthStateChanged(user=>{
+    currentUser = user; 
+
     if(user){
-        // user is signed in
+        // console.log(`auth.currentUser: ${auth.currentUser.uid}\nuser: ${user.uid}`);
+        currentUser = user;
         // redirect user to user note view
         if(window.location.pathname !== "/root/noteView.html"){
             window.location.replace("./noteView.html");
-        }
-    } else {
-        // user is not signed in
-        // redirect user to user login page
-        if(window.location.pathname !== "/root/index.html"){
-            window.location.replace("./index.html");
-        }
-    }
+        } 
+    } 
 });
+
+
+// export async function getUsersNotes(user){
+//     if(user){
+//         let usersNotes = [];
+//         await getNotes(user.uid).then(notes=>{
+//             notes.forEach(note=>{
+//                 // console.log("docID: " + note.id + " \ncontent: " + note.content);
+//                 usersNotes.push(note);
+//                 //createNoteElement(note.content) in noteView
+//             })
+//         }).catch(error=>{
+//             console.log(error.message);
+//         });
+//         return usersNotes;
+//     }
+//     return null;
+// }
+

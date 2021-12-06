@@ -332,7 +332,7 @@ a:visited {
     min-height: 200px;
     color: var(--text-inactive);
     background-color: var(--bg-text);
-    transition: all .5s ease;
+    transition: all .1s linear;
     position: relative;
     outline: 4px solid transparent;
     border: 0;
@@ -355,7 +355,6 @@ a:visited {
 
 .note:hover {
     outline: 4px solid var(--accent-dark);
-    transition: outline 250ms ease-out;
 }
 
 .note:focus-within {
@@ -422,13 +421,14 @@ a:visited {
 
 .tooltip {
     position: absolute;
-    top: -5px;
-    left: -4.6rem;
+    top: -7px;
+    left: -4.8rem;
     z-index: 100;
     background-color: var(--bg-black);
-    padding: .3rem;
+    padding: .8rem;
     border-radius: .4rem;
-    font-size: 1rem;
+    font-size: .8rem;
+    font-weight: 400;
     visibility: hidden;
 }
 

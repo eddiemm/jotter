@@ -1,114 +1,105 @@
 import { createUser, loginUser } from "./authentication.js";
-// console.log(auth);
 
+/* Sign in form */
 const signInForm = document.querySelector('.js-sign-in');
 const signUpLink = document.querySelector('.js-sign-up-link');
-const signUpForm = document.querySelector('.js-sign-up');
-const signInLink = document.querySelector('.js-sign-in-link');
 
+const userEmailInput = signInForm.children[1];
+const userPasswordInput = signInForm.children[2];
+let userEmail = userEmailInput.value;
 
-signUpLink.addEventListener('click', (evt)=>{
+const handleEmailChange = (evt) => {
+    userEmail = evt.target.value;
+}
+userEmailInput.addEventListener('change', handleEmailChange, false);
+
+/* Switch to sign up form */
+const gotoSignUp = () => {
     signInForm.classList.add('hide');
     signUpForm.classList.remove('hide');
-    // clear sign in form
+    // clear registration form when switching between forms
     for(let i = 0; i < signInForm.children.length; i++){
         if(signInForm.children[i].classList.contains('input-field')){
             signInForm.children[i].value='';
         }
     }
-}, false);
+}
+signUpLink.addEventListener('click', gotoSignUp, false);    
+
+/* Login user */
+const loginButton = signInForm.children[4];
+const loginClicked = (evt) => {
+    try{
+        let userEmail = userEmailInput.value;
+        if(userEmail && userPasswordInput.value){
+            loginUser(userEmail, userPasswordInput.value); 
+        }
+    } catch (e) {
+        console.log("Login error occured: " + e);
+    }
+}
+loginButton.addEventListener('click', loginClicked, false);
 
 
-signInLink.addEventListener('click', (evt)=>{
+/* Sign in form */
+const signUpForm = document.querySelector('.js-sign-up');
+const signInLink = document.querySelector('.js-sign-in-link');
+
+/* Switch to login form */
+const gotoSignIn = () => {
     signUpForm.classList.add('hide');
     signInForm.classList.remove('hide');
-    // clear registration form
+    // clear registration form when switching between forms
     for(let i = 0; i < signUpForm.children.length; i++){
         if(signUpForm.children[i].classList.contains('input-field')){
             signUpForm.children[i].value='';
         }
     }
-}, false);
+}    
+signInLink.addEventListener('click', gotoSignIn, false);
 
 
-// get the users email
-const userEmailInput = signInForm.children[1];
-let userEmail = userEmailInput.value;
-
-userEmailInput.addEventListener('change', function (evt){
-    userEmail = this.value;
-    // console.log(userEmail);
-}, false);
-
-// get reference for the users password input, but do not store this value
-const userPasswordInput = signInForm.children[2];
-// passwordInput.addEventListener('change', function (evt){
-//     // console.log(this.value);
-// }, false);
-
-
-
-let newUserEmail, newUserName, newUserPassword, newUserPasswordConfirmed;
+/* Sign up form */
 const newUserEmailInput = signUpForm.children[1];
 const newUserNameInput = signUpForm.children[2];
 const newUserPasswordInput = signUpForm.children[3];
 const newUserPasswordConfirmedInput = signUpForm.children[4];
+let newUserEmail='', newUserName='';
 
-newUserEmailInput.addEventListener('change', function (evt){
-    newUserEmail = this.value;
-    // console.log(newUserEmail);
-}, false);
-
-newUserNameInput.addEventListener('change', function (evt){
-    newUserName = this.value;
-    // console.log(newUserName);
-}, false);
-
-// newUserPasswordInput.addEventListener('change', function (evt){
-//     newUserPassword = this.value;
-//     console.log(newUserPassword);
-// }, false);
-
-newUserPasswordConfirmedInput.addEventListener('keyup', function (evt){
-    if(this.value !== newUserPasswordInput.value){
-        this.setCustomValidity('passwords dont match');
+const handleNewUserEmailChange = (evt) => {
+    newUserEmail = evt.target.value;
+}
+newUserEmailInput.addEventListener('change', handleNewUserEmailChange, false);
+    
+const handleNewUserNameChange = (evt) => {
+    newUserName = evt.target.value;
+} 
+newUserNameInput.addEventListener('change', handleNewUserNameChange, false);    
+    
+// validate confirmed password matches new password
+newUserPasswordConfirmedInput.addEventListener('change', function (evt){
+    // sets error messages from validity checks
+    if(evt.target.value !== newUserPasswordInput.value){
+        evt.target.setCustomValidity('passwords dont match');
     } else {
-        this.setCustomValidity('');
+        evt.target.setCustomValidity('');
     }
+    // displays error messages to the user regarding validity
+    evt.target.reportValidity();
 }, false);    
-
-// newUserPasswordInput.value should be passed in when the function is invoked
-function signUpNewUser(email, username, password){
-    if(newUserPasswordInput.value===newUserPasswordConfirmedInput.value){
-        createUser(email, password);
-        // TODO: firestore - store users name in the database - newUserName        
+    
+const submitSignUp = signUpForm.children[5];
+const signUpButtonClicked = (evt) => {
+    try{
+        console.log(newUserEmail);
+        if(newUserEmail  && newUserPasswordInput.value){
+            createUser(newUserEmail, newUserPasswordInput.value);
+        }
+    } catch (e) {
+        console.log("Invalid email or password: " + e);
     }
 }
+submitSignUp.addEventListener('click', signUpButtonClicked, false);
+    
+    
 
-const submitSignUp = signUpForm.children[5];
-// submitSignUp.addEventListener('submit', signUpNewUser(newUserEmail, newUserName), false);
-submitSignUp.addEventListener('click', (evt)=>{
-    console.log(newUserPasswordInput.value);
-    createUser(newUserEmail, newUserPasswordInput.value);
-    // currentAuth.signUpNewUser(newUserEmail, newUserName);
-}, false);
-
-
-// // login user
-const signInButton = signInForm.children[4];
-signInButton.addEventListener('click', ()=>{
-    // window.location.replace("noteView.html");   
-    loginUser(userEmail, userPasswordInput.value); 
-
-    //TODO: window changes before loginUser finishes process
-    // window.location.href = "./noteView.html"
-}, false);
-
-
-// // sign out user
-// const signOutTitle = document.querySelector('.title');
-//     signOutTitle.addEventListener('click', ()=>{
-//         //TODO: if user is signed in, try:  if(auth.currentUser) 
-//         // window.location.replace("index.html");
-//         signUserOut();
-// }, false);
