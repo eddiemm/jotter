@@ -1,6 +1,5 @@
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, updateProfile } from 'https://www.gstatic.com/firebasejs/9.1.0/firebase-auth.js';
 import { auth } from "./firebase.js";
-import { getNotes } from "./firestore.js";
 
 // export functions to handle authentication 
 export function createUser(email, password){

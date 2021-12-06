@@ -1,6 +1,6 @@
 import { signUserOut } from './authentication.js';
-import { createNoteInDB, getNotes } from './firestore.js';
-import { auth } from "./firebase.js";
+import { createNoteInDB, getUsersNotes, updateNoteInDB, deleteNoteFromDB } from './firestore.js';
+import { auth } from "./firebase.js";   
 
 
 /* MENU */
@@ -77,10 +77,15 @@ function toggleToolById(toolId){
 const noteGrid = document.querySelector('.js-note-grid');
 const addButton = document.querySelector('#addNote');
 
-const addNoteHandler = (evt) => {
-    createNoteElement("");
+const addNoteHandler = async (evt) => {
+    let newNote = {
+        id: null,
+        content: ""
+    };
+
     // create a new note in database for currentUser
-    // createNoteInDB(currentUser, "hello db!");
+    newNote.id = await createNoteInDB(auth.currentUser.uid, "");
+    createNoteElement(newNote);
 }
 addButton.addEventListener('click', addNoteHandler, false);    
     
@@ -92,8 +97,9 @@ const handleGridMousedown = (evt) => {
         evt.preventDefault();
         if(tooltipClicked){
             console.log('delete note');
+            const deleteTarget = evt.target.closest('.note').id;
+            deleteNoteFromDB(auth.currentUser.uid, deleteTarget);
             evt.target.closest('.note').remove();
-            // TODO: remove note from DB
             alert('Note deleted');
         }
     }  
@@ -117,10 +123,23 @@ const blurHandler = (evt) => {
         for(let i = 0; i < toolbar.children.length; i++){
             toolbar.children[i].classList.remove('toolbar__tool--is-selected');
         }
+
+        console.log(evt.target.textContent);
     }
 }
 noteGrid.addEventListener('blur', blurHandler, true);    
     
+const noteChangedHandler = (evt) => {
+    console.log('changed');
+    // get the id of the note changed
+    const noteId = evt.target.parentElement.id;
+    // update note content in the db using the id
+    // console.log(evt.target.innerHTML);
+    updateNoteInDB(auth.currentUser.uid, noteId, evt.target.innerHTML);
+}
+noteGrid.addEventListener('input', noteChangedHandler, false);
+
+
 /* Search bar */
 const searchBar = document.querySelector('.js-searchbar');
 const handleSearchKeyup = (evt) => {
@@ -171,15 +190,16 @@ logoutLink.addEventListener('click', (evt)=>{
 
 
 /* Render user notes from DB */
-export function createNoteElement(noteText){
+export function createNoteElement(note){
     const newNote = document.createElement('div');
     newNote.classList.add('note');
+    newNote.id = `${note.id}`;
     
     const newNoteText = document.createElement('span');
     newNoteText.classList.add('note__text');
     newNoteText.contentEditable = 'true';
     newNoteText.spellcheck = 'false';
-    newNoteText.textContent = noteText;
+    newNoteText.innerHTML = note.content;
 
     const deleteNoteButton = document.createElement('div');
     deleteNoteButton.classList.add('note__btn--delete', 'js-note-delete');
@@ -193,11 +213,11 @@ export function createNoteElement(noteText){
 
     newNote.append(newNoteText, deleteNoteButton);
     noteGrid.appendChild(newNote);
+
+    console.log(`Note created:\nid: ${note.id}\ncontent: ${note.content}`);
 }
 
 
-
-// TODO: cloud database connection
 // TODO: Session - State management
 // TODO: JS modularity
 // TODO: HTML Semantics and Accesibility Check
@@ -224,12 +244,12 @@ auth.onAuthStateChanged( user => {
         }
     } else {
         // fetch users notes from DB
-        getNotes(user.uid).then(notes=>{
+        getUsersNotes(user.uid).then(notes=>{
             usersNotes=notes;
             notes.forEach(note=>{
                 // console.log("docID: " + note.id + " \ncontent: " + note.content);
                 // usersNotes.push(note);
-                createNoteElement(note.content);
+                createNoteElement(note);
             })
             console.log(usersNotes);
         }).catch(error=>{

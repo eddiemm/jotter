@@ -1,4 +1,4 @@
-import { collection, getDocs } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-firestore.js";
+import { collection, getDocs, addDoc, updateDoc, doc, deleteDoc } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-firestore.js";
 import { database } from "./firebase.js";
 
 
@@ -31,12 +31,28 @@ let notesReference;
 
 
 
-export function createNoteInDB(){    
-   
+export async function createNoteInDB(uid, noteContent){    
+    try{
+        if(uid){
+            const collectionReference = collection(database, "users/"+uid+"/notes");
+            // CREATE A DOCUMENT WITH AUTO GEN ID
+            // addDoc(collectionReference, noteContent);
+            const addedDocReference = await addDoc(collectionReference, { content: noteContent });
+            console.log(addedDocReference.id);
+            // console.log("adding note for user: " + uid);
+            // console.log("added document with auto gen id: " + addedDocReference.id);
+            // console.log("content: " + noteContent);
+            return addedDocReference.id;
+
+        }
+    } catch(e){
+        console.log("Error adding note to firestore: " + e.message);
+    }
+    return;
 }
 
 
-export async function getNotes(uid){
+export async function getUsersNotes(uid){
     if(uid){
         const collectionReference = collection(database, "users/"+uid+"/notes");
         const allDocsSnapshot = await getDocs(collectionReference);
@@ -55,13 +71,15 @@ export async function getNotes(uid){
     return null;
 }
 
-function updateNoteInDB(){
-    
+export async function updateNoteInDB(uid, noteId, newContent){
+    // UPDATE A DOCUMENT USING UID AND DOCUMENTREFERENCE.ID
+    const documentToUpdate = doc(database, `users/${uid}/notes/${noteId}`);
+    await updateDoc( documentToUpdate, {
+        content: `${newContent}`
+    });
 }
 
-function deleteNoteFromDB(){
-    
+export async function deleteNoteFromDB(uid, noteId){
+    await deleteDoc(doc(database, `users/${uid}/notes/${noteId}`));
 }
 
-function getUsersNotes(user){
-}
