@@ -59,11 +59,7 @@ toolbar.addEventListener('mousedown', (evt) => {
 // function to toggle a tool element using their id
 function toggleToolById(toolId){        
     for(let i = 0; i < editingTools.length; i++){
-        if(editingTools[i].toolName === toolId){
-            // if(toolId === 'insertUnorderedList' || toolId === 'insertOrderedList'){
-            //     document.execCommand("indent");
-            //     console.log("matched" + toolId);
-            // }            
+        if(editingTools[i].toolName === toolId){         
             editingTools[i].isToggled = !editingTools[i].isToggled;
             document.execCommand(toolId);
         }
@@ -96,7 +92,6 @@ const handleGridMousedown = (evt) => {
     if(deleteClicked || tooltipClicked){
         evt.preventDefault();
         if(tooltipClicked){
-            console.log('delete note');
             const deleteTarget = evt.target.closest('.note').id;
             deleteNoteFromDB(auth.currentUser.uid, deleteTarget);
             evt.target.closest('.note').remove();
@@ -123,18 +118,14 @@ const blurHandler = (evt) => {
         for(let i = 0; i < toolbar.children.length; i++){
             toolbar.children[i].classList.remove('toolbar__tool--is-selected');
         }
-
-        console.log(evt.target.textContent);
     }
 }
 noteGrid.addEventListener('blur', blurHandler, true);    
     
 const noteChangedHandler = (evt) => {
-    console.log('changed');
     // get the id of the note changed
     const noteId = evt.target.parentElement.id;
     // update note content in the db using the id
-    // console.log(evt.target.innerHTML);
     updateNoteInDB(auth.currentUser.uid, noteId, evt.target.innerHTML);
 }
 noteGrid.addEventListener('input', noteChangedHandler, false);
@@ -146,12 +137,10 @@ const handleSearchKeyup = (evt) => {
     // revert previous split text and span insert
     for(let i = 0; i < noteGrid.children.length; i ++){
         noteGrid.children[i].firstElementChild.innerHTML = noteGrid.children[i].firstElementChild.innerText;
-        console.log(noteGrid.children[i].firstElementChild.textContent);
     }
 
 
     if(evt.target.value){
-        // console.log('value of search: ' + evt.target.value);
         searchNotes(evt.target.value);
     }
 }
@@ -165,7 +154,6 @@ function searchNotes(searchText){
             let searchTextStart = fullNoteString.indexOf(searchText);
             let searchTextEnd = searchTextStart + searchText.length;
             
-            // console.log(noteGrid.children[i].firstElementChild.firstChild); // text node
             const fullStringTextNode = noteGrid.children[i].firstElementChild.firstChild;
             // split 3/3 string
             const thirdSubstr = fullStringTextNode.splitText(searchTextEnd).textContent;
@@ -213,45 +201,22 @@ export function createNoteElement(note){
 
     newNote.append(newNoteText, deleteNoteButton);
     noteGrid.appendChild(newNote);
-
-    console.log(`Note created:\nid: ${note.id}\ncontent: ${note.content}`);
 }
 
-
-// TODO: Session - State management
-// TODO: JS modularity
-// TODO: HTML Semantics and Accesibility Check
-
-
-// BUGS: 
-// Edit buttons dont affect CTRL+A text
-// Clicking delete button removes not focus.
-// ul button behavior bug
-// ol button behavior bug
-
-// EXTRAS:
-// Note deleted custom alert
-// Note deleted animation
 
 let usersNotes = [];
 auth.onAuthStateChanged( user => {
     if(!user){
         if(window.location.pathname !== "/root/index.html"){
-            // TODO: storeUsersNotesToDatabase()
-            // TODO: removeAllNotesFromView()
             window.location.replace("./index.html");
-            console.log('user logout fired from noteview');
         }
     } else {
         // fetch users notes from DB
         getUsersNotes(user.uid).then(notes=>{
             usersNotes=notes;
             notes.forEach(note=>{
-                // console.log("docID: " + note.id + " \ncontent: " + note.content);
-                // usersNotes.push(note);
                 createNoteElement(note);
             })
-            console.log(usersNotes);
         }).catch(error=>{
             console.log(error.message);
         });

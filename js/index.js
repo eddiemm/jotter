@@ -17,7 +17,7 @@ userEmailInput.addEventListener('change', handleEmailChange, false);
 const gotoSignUp = () => {
     signInForm.classList.add('hide');
     signUpForm.classList.remove('hide');
-    // clear registration form when switching between forms
+    // clear inputs when switching between forms
     for(let i = 0; i < signInForm.children.length; i++){
         if(signInForm.children[i].classList.contains('input-field')){
             signInForm.children[i].value='';
@@ -29,13 +29,14 @@ signUpLink.addEventListener('click', gotoSignUp, false);
 /* Login user */
 const loginButton = signInForm.children[4];
 const loginClicked = (evt) => {
+    console.log('clicked');
     try{
         let userEmail = userEmailInput.value;
         if(userEmail && userPasswordInput.value){
             loginUser(userEmail, userPasswordInput.value); 
         }
     } catch (e) {
-        console.log("Login error occured: " + e);
+        console.log(`Login error: ${e}`);
     }
 }
 loginButton.addEventListener('click', loginClicked, false);
@@ -49,7 +50,7 @@ const signInLink = document.querySelector('.js-sign-in-link');
 const gotoSignIn = () => {
     signUpForm.classList.add('hide');
     signInForm.classList.remove('hide');
-    // clear registration form when switching between forms
+    // clear inputs when switching between forms
     for(let i = 0; i < signUpForm.children.length; i++){
         if(signUpForm.children[i].classList.contains('input-field')){
             signUpForm.children[i].value='';
@@ -76,8 +77,7 @@ const handleNewUserNameChange = (evt) => {
 } 
 newUserNameInput.addEventListener('change', handleNewUserNameChange, false);    
     
-// validate confirmed password matches new password
-newUserPasswordConfirmedInput.addEventListener('change', function (evt){
+const validateInput = (evt) => {
     // sets error messages from validity checks
     if(evt.target.value !== newUserPasswordInput.value){
         evt.target.setCustomValidity('passwords dont match');
@@ -86,17 +86,18 @@ newUserPasswordConfirmedInput.addEventListener('change', function (evt){
     }
     // displays error messages to the user regarding validity
     evt.target.reportValidity();
-}, false);    
+}
+// validate confirmed password matches new password
+newUserPasswordConfirmedInput.addEventListener('change', validateInput, false);    
     
 const submitSignUp = signUpForm.children[5];
 const signUpButtonClicked = (evt) => {
     try{
-        console.log(newUserEmail);
         if(newUserEmail  && newUserPasswordInput.value){
             createUser(newUserEmail, newUserPasswordInput.value);
         }
     } catch (e) {
-        console.log("Invalid email or password: " + e);
+        console.log(`Invalid email or password: ${e}`);
     }
 }
 submitSignUp.addEventListener('click', signUpButtonClicked, false);

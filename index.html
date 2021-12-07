@@ -20,19 +20,27 @@
     <header>
         <h1 class="title">Jotter</h1>
     </header>
+
     <!-- login form -->
     <form class="wrapper wrapper--login js-sign-in">
         <h3 class="login__heading">Sign In</h3>
-        <input value="test4@yahoo.com" name="email" class="input-field input-field--login" type="email" required placeholder="Email" title="Enter a valid email address" pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$">
-        <input value="Abc123" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" name="password" class="input-field input-field--login" type="password" required placeholder="Password" title="Must be at least 6 characters and contain 1 uppercase, 1 lowercase, 1 number.">
+
+        <!-- user email -->
+        <input name="email" class="input-field input-field--login" type="email" required placeholder="Email" title="Enter a valid email address" pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$">
+
+        <!-- user password -->
+        <input pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" name="password" class="input-field input-field--login" type="password" required placeholder="Password" title="Must be at least 6 characters and contain 1 uppercase, 1 lowercase, 1 number.">
+
         <!-- checkbox, detail, forgot password link group -->
         <div class="detail-group">
             <input id="remember" class="detail detail--checkbox" type="checkbox">
             <label for="remember" class="detail detail--text">Remember me</label>
             <a class="detail detail--link" href="#">Forgot password?</a>
         </div>
+
         <!-- login button -->
         <input class="btn btn--login" type="button" value="login">
+
         <!-- link to sign up -->
         <p class="detail detail--text">No account? <span class="detail detail--link js-sign-up-link" >Sign up <u>here</u></span></p>    
     </form>
@@ -40,13 +48,22 @@
     <!-- sign up form -->
     <form class="wrapper wrapper--login hide js-sign-up">
         <h3 class="login__heading">Sign Up</h3>
+
+        <!-- new user email -->
         <input name="emailRegistration" class="input-field input-field--sign-up" type="email" required placeholder="Email" title="Enter a valid email address" pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$">
+
+        <!-- new user name -->
         <input name="createUsername" class="input-field input-field--sign-up" type="text" required placeholder="Pick a username">
+
+        <!-- new password-->
         <input pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" name="newPassword" class="input-field input-field--sign-up" type="password" required placeholder="Create password" title="Must be at least 6 characters and contain 1 uppercase, 1 lowercase, 1 number.">
+
+        <!-- confirm password -->
         <input pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" name="confirmedPassword" class="input-field input-field--sign-up" type="password" required placeholder="Confirm password">
         
         <!-- sign up button -->
         <input class="btn btn--sign-up" type="button" value="sign up">
+        
         <!-- link to sign in -->
         <p class="detail detail--text">Already have an account? <span class="detail detail--link js-sign-in-link">Sign in <u>here</u></span></p>
     </form>   

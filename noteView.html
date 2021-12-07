@@ -20,10 +20,8 @@
 <body>
     <!-- navigation bar -->
     <nav class="navbar">
-
         <!-- navbar items -->
         <ul class="navbar__items">
-
             <!-- hamburger -->
             <li class="navbar__hamburger js-hamburger-wrapper">
                 <div class="hamburger js-hamburger-icon"></div>
@@ -55,20 +53,21 @@
 
     <div class="menu__wrapper js-menu">
         <ul class="menu">
-            <li class="menu__username-label">Username</li>
-            <li ><a href="#preferences" class="menu__link">Preferences</a></li>
-            <li><a href="#account" class="menu__link">Account</a></li>
+            <li id="user-label" class="menu__username-label">Username</li>
+            <!-- preference and account settings page -->
+            <!-- <li ><a href="#preferences" class="menu__link">Preferences</a></li>
+            <li><a href="#account" class="menu__link">Account</a></li> -->
             <li><a id="logoutLink" href="#" class="menu__link">Sign Out</a></li>
         </ul>
     </div>
 
     <main class="note-grid js-note-grid">
-        
+        <!-- notes are dynamically rendered here -->
     </main>
+
+    <!-- add a new note FAB -->
     <div id="addNote" class="btn btn--add-note">&plus;</div>
+
     <script type="module" src="js/noteView.js"></script>
 </body>
 </html>
-
-<!-- div note: editing works -->
-<!-- span note: editing doesnt work, empty placeholder works -->
