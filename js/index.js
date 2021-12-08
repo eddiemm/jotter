@@ -1,4 +1,4 @@
-import { createUser, loginUser } from "./authentication.js";
+import { createUser, loginUser, signUserOut } from "./authentication.js";
 
 /* Sign in form */
 const signInForm = document.querySelector('.js-sign-in');
@@ -101,6 +101,9 @@ const signUpButtonClicked = (evt) => {
     }
 }
 submitSignUp.addEventListener('click', signUpButtonClicked, false);
-    
-    
 
+const logoutLink = document.getElementById('logout-link');
+logoutLink.addEventListener('click', evt => {
+    console.log("user signed out");
+    signUserOut();
+}, false);

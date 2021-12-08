@@ -207,8 +207,8 @@ export function createNoteElement(note){
 let usersNotes = [];
 auth.onAuthStateChanged( user => {
     if(!user){
-        if(window.location.pathname !== "/root/index.html"){
-            window.location.replace("./index.html");
+        if(window.location.pathname !== "/src/index.html"){
+            window.location.replace("../index.html");
         }
     } else {
         // fetch users notes from DB
