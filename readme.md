@@ -1,3 +1,3 @@
 # Jotter
 
-_Link to site in the works_
+##Link to live app on Heroku: [Jotter](https://jotter-notes.herokuapp.com/)
