@@ -223,6 +223,12 @@ auth.onAuthStateChanged( user => {
     }
 });
 
+// sign user out when user closes the tab
+const handleUnload = () => {
+    signUserOut(auth.currentUser);
+}
+window.addEventListener('beforeunload', handleUnload, false);
+
 
 
 
