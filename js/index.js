@@ -1,4 +1,4 @@
-import { createUser, loginUser, signUserOut } from "./authentication.js";
+import { createUser, loginUser } from "./authentication.js";
 
 /* Sign in form */
 const signInForm = document.querySelector('.js-sign-in');
@@ -29,7 +29,6 @@ signUpLink.addEventListener('click', gotoSignUp, false);
 /* Login user */
 const loginButton = signInForm.children[4];
 const loginClicked = (evt) => {
-    console.log('clicked');
     try{
         let userEmail = userEmailInput.value;
         if(userEmail && userPasswordInput.value){
@@ -94,16 +93,10 @@ const submitSignUp = signUpForm.children[5];
 const signUpButtonClicked = (evt) => {
     try{
         if(newUserEmail  && newUserPasswordInput.value){
-            createUser(newUserEmail, newUserPasswordInput.value);
+            createUser(newUserEmail, newUserPasswordInput.value, newUserName);
         }
     } catch (e) {
         console.log(`Invalid email or password: ${e}`);
     }
 }
 submitSignUp.addEventListener('click', signUpButtonClicked, false);
-
-const logoutLink = document.getElementById('logout-link');
-logoutLink.addEventListener('click', evt => {
-    console.log("user signed out");
-    signUserOut();
-}, false);

@@ -203,6 +203,8 @@ export function createNoteElement(note){
     noteGrid.appendChild(newNote);
 }
 
+/* Add user label in menu */
+const label = document.getElementById('user-label');
 
 let usersNotes = [];
 auth.onAuthStateChanged( user => {
@@ -211,6 +213,8 @@ auth.onAuthStateChanged( user => {
             window.location.replace("../index.html");
         }
     } else {
+        // set user display name
+        label.textContent = user.displayName;
         // fetch users notes from DB
         getUsersNotes(user.uid).then(notes=>{
             usersNotes=notes;

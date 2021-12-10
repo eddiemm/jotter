@@ -1,15 +1,16 @@
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'https://www.gstatic.com/firebasejs/9.1.0/firebase-auth.js';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, updateProfile } from 'https://www.gstatic.com/firebasejs/9.1.0/firebase-auth.js';
 import { auth } from "./firebase.js";
 
 /* Create a user using email and password combination */ 
-export function createUser(email, password){
+export function createUser(email, password, displayName = ''){
     createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
         // Signed in 
         const user = userCredential.user;
-        console.log(`${user.email} created successfully!`);
-    })
-    .catch((error) => {
+        updateProfile(user, {
+            displayName: displayName
+        });
+    }).catch((error) => {
         const errorMessage = error.message;
         console.log(`Error occurred: ${errorMessage}`);
     });
@@ -58,7 +59,6 @@ auth.onAuthStateChanged(user=>{
     if(user){
         // redirect user to note view
         if(window.location.pathname !== "/pages/noteView.html"){
-            console.log("send to noteview");
             window.location.replace("../pages/noteView.html");
         } 
     } 
