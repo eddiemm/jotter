@@ -24,8 +24,20 @@ export function loginUser(email, password){
         console.log(`${user.email} signed in successfully`);
     })
     .catch((error) => {
-        const errorMessage = error.message;
-        console.log(`Error occured signing in: ${errorMessage}`);
+        const errorCode = error.code;
+        switch(errorCode){
+            case "auth/invalid-email": 
+                alert("Email format invalid. Try again.");
+                break;
+            case "auth/wrong-password": 
+                alert("Password incorrect. Try again.");
+                break;
+            case "auth/user-not-found": 
+                alert("User not found. Try again.");
+                break;
+            default: 
+                break;   
+        }
     });
 }
 
