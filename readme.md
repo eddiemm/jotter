@@ -2,7 +2,6 @@
 
 ## Link to live app on Heroku: [Jotter](https://jotter-notes.herokuapp.com/) ##
 
-# Jotter #
 ### A _'post it note'_ inspired web app ###
 Jotter is a simple web application that allows users to store notes on the cloud.
 
