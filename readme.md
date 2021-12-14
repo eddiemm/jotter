@@ -39,9 +39,9 @@ I decided to build this app to test my skills in HTML, CSS and Javascript. I als
 # Screenshots # 
 Not interested in creating an account? Here's a few screenshots of app usage.
 
-![Login](./img/login.PNG)"login"
+![Login](img/login.PNG)"login"
 
-![Search](/img/search.PNG)"search"
+![Search](img/search.PNG)"search"
 
 ![Editing](img/tools.PNG)"editing"
 
