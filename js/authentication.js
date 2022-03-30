@@ -61,8 +61,8 @@ export function signUserOut(){
 auth.onAuthStateChanged(user=>{    
     if(user){
         // redirect user to note view
-        if(window.location.pathname !== "/src/pages/noteView.html"){
-            window.location.replace("/src/pages/noteView.html");
+        if(window.location.pathname !== "/pages/noteView.html"){
+            window.location.replace("/pages/noteView.html");
         } 
     } 
 });

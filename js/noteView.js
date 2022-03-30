@@ -208,8 +208,8 @@ const label = document.getElementById('user-label');
 let usersNotes = [];
 auth.onAuthStateChanged( user => {
     if(!user){
-        if(window.location.pathname !== "/src/index.html"){
-            window.location.replace("/src/index.html");
+        if(window.location.pathname !== "/index.html"){
+            window.location.replace("/index.html");
         }
     } else {
         // set user display name
