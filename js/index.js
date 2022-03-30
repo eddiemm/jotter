@@ -100,3 +100,15 @@ const signUpButtonClicked = (evt) => {
     }
 }
 submitSignUp.addEventListener('click', signUpButtonClicked, false);
+
+const testmodeButton = document.querySelector('.btn--testmode');
+testmodeButton.addEventListener('click', testModeButtonClicked, false);
+
+function testModeButtonClicked(evt){
+    // window.location.replace("/src/pages/noteView.html");
+    try{
+        loginUser('testmode@testmode.com', 'Abc123'); 
+    } catch (e) {
+        console.log(`Login error: ${e}`);
+    }
+}

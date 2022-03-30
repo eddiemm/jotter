@@ -22,7 +22,10 @@ export function loginUser(email, password){
     .then((userCredential) => {
         // Signed in 
         const user = userCredential.user;        
-        console.log(`${user.email} signed in successfully`);
+        console.log(`Signed in successfully`);
+        if(user.uid === 'LPGnSdIX7YVHz3JpgV6jHRftVxb2'){
+            console.log('Running in test mode');
+        }
     })
     .catch((error) => {
         const errorCode = error.code;
@@ -47,7 +50,7 @@ export function signUserOut(){
     // unsubscribe();
     signOut(auth).then(() => {
         // Sign-out successful.
-        console.log('signed out successfully');
+        console.log('Signed out successfully');
         // window.location.href = "./index.html";
     }).catch((error) => {
         console.log(`Error occurred signing out: ${error.message}`);
@@ -58,8 +61,8 @@ export function signUserOut(){
 auth.onAuthStateChanged(user=>{    
     if(user){
         // redirect user to note view
-        if(window.location.pathname !== "/pages/noteView.html"){
-            window.location.replace("../pages/noteView.html");
+        if(window.location.pathname !== "/src/pages/noteView.html"){
+            window.location.replace("/src/pages/noteView.html");
         } 
     } 
 });

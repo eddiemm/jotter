@@ -175,6 +175,12 @@ a:visited {
     margin-top: .5rem;
 }
 
+.btn--testmode {
+    position: absolute;
+    bottom: 25px;
+    right: 25px;
+}
+
 /* || NOTES HOME */
 
 .navbar {

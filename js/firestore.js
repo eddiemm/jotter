@@ -4,7 +4,7 @@ import { database } from "./firebase.js";
 // Create a note in DB
 export async function createNoteInDB(uid, noteContent){    
     try{
-        if(uid){
+        if(uid && uid !== 'LPGnSdIX7YVHz3JpgV6jHRftVxb2'){
             const collectionReference = collection(database, `users/${uid}/notes`);
             // Create a doc with auto generated id
             const addedDocReference = await addDoc(collectionReference, { content: noteContent });
@@ -19,7 +19,7 @@ export async function createNoteInDB(uid, noteContent){
 
 // Fetch user notes
 export async function getUsersNotes(uid){
-    if(uid){
+    if(uid && uid !== 'LPGnSdIX7YVHz3JpgV6jHRftVxb2'){
         const collectionReference = collection(database, `users/${uid}/notes`);
         const allDocsSnapshot = await getDocs(collectionReference);
         let notes = [];
@@ -37,14 +37,18 @@ export async function getUsersNotes(uid){
 // Update a note in DB
 export async function updateNoteInDB(uid, noteId, newContent){
     // UPDATE A DOCUMENT USING UID AND DOCUMENTREFERENCE.ID
-    const documentToUpdate = doc(database, `users/${uid}/notes/${noteId}`);
-    await updateDoc( documentToUpdate, {
-        content: `${newContent}`
-    });
+    if(uid !== 'LPGnSdIX7YVHz3JpgV6jHRftVxb2'){
+        const documentToUpdate = doc(database, `users/${uid}/notes/${noteId}`);
+        await updateDoc( documentToUpdate, {
+            content: `${newContent}`
+        });
+    }
 }
 
 // Delete a note from DB
 export async function deleteNoteFromDB(uid, noteId){
-    await deleteDoc(doc(database, `users/${uid}/notes/${noteId}`));
+    if(uid !== 'LPGnSdIX7YVHz3JpgV6jHRftVxb2'){
+        await deleteDoc(doc(database, `users/${uid}/notes/${noteId}`));
+    }
 }
 

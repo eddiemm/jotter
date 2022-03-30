@@ -172,7 +172,6 @@ function searchNotes(searchText){
 /* Sign out */
 const logoutLink = document.querySelector("#logoutLink");
 logoutLink.addEventListener('click', (evt)=>{
-    // TODO: remove listeners
     signUserOut();
 });
 
@@ -210,7 +209,7 @@ let usersNotes = [];
 auth.onAuthStateChanged( user => {
     if(!user){
         if(window.location.pathname !== "/src/index.html"){
-            window.location.replace("../index.html");
+            window.location.replace("/src/index.html");
         }
     } else {
         // set user display name
