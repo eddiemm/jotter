@@ -2,18 +2,17 @@
 
 ## Link to live app on Heroku: [Jotter](https://jotter-notes.herokuapp.com/) ##
 
-# Jotter #
 ### A _'post it note'_ inspired web app ###
 Jotter is a simple web application that allows users to store notes on the cloud.
 
 # Features #
 + Basic editing functionality including bold, italic, underline and more.
-+ User data is stored securley on the cloud using google authentication.
++ User data is stored securely on the cloud using google authentication.
 + Find any text in any note using the search bar.
 + Mobile friendly so you can jot down notes on the go!
 
 # Why Jotter? #
-If you're like me, you are constantly learning and sometimes you just need to jot down a small note. A notepad is great, but I would hate to waste a full sheet of paper on small notes (save trees). Post it notes are awesome, but a cluttered desk is a cluttered mind. Mobile devices? Let's face it, that storage is filled with images and videos of our doggos. 
+If you're like me, you are constantly learning and sometimes you just need to jot down a short note. A notepad is great, but I would hate to waste a full sheet of paper on small notes (save trees). Post it notes are awesome, but as we know a cluttered desk is a cluttered mind. Mobile devices? Let's face it, that storage is filled with images and videos of our doggos. 
 
 Jotter solves this problem by making it extremely easy to store and delete notes on the cloud. Saves you storage on your desk, machine and mobile!
 
@@ -33,15 +32,15 @@ I decided to build this app to test my skills in HTML, CSS and Javascript. I als
 
 # Future improvements #
 + Remove usage of execCommand() (deprecated)
-+ Add more editing features such as image uploads, code formatting and mark up parser.
++ Add more editing features such as image uploads, code formatting and mark down parser.
 + Build user preferences and account settings page.
 
 # Screenshots # 
 Not interested in creating an account? Here's a few screenshots of app usage.
 
-![Login](./img/login.PNG)"login"
+![Login](img/login.PNG)
 
-![Search](/img/search.PNG)"search"
+![Search](img/search.PNG)
 
-![Editing](img/tools.PNG)"editing"
+![Editing](img/tools.PNG)
 
